@@ -10,5 +10,5 @@ pip install mcstatus
 2. Clone [this](https://github.com/py-mine/mcstatus) repository.
 
 ## Screenshots
-![A screenshot of the main area of the gui]()
-![A screenshot of the server list editor]()
+![A screenshot of the main area of the gui](https://github.com/ojokenobi/mcstatus-frontend/blob/main/screenshots/MCservercheck1.PNG)
+![A screenshot of the server list editor](https://github.com/ojokenobi/mcstatus-frontend/blob/main/screenshots/MCservercheck2.PNG)
