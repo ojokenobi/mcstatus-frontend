@@ -1,5 +1,5 @@
 # mcstatus-frontend
-A simple frontend for the mcstatus module for python.
+A simple frontend for the mcstatus module for python. I have also experimented with adding threading to the gui, which ensures the program does not temporarily hang when contacting servers for information.
 
 ## First Setup and dependencies
 You will need to install the mcstatus module, the two ways I would recommend are as follows:
