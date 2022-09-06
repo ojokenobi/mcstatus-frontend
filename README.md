@@ -7,7 +7,7 @@ You will need to install the mcstatus module, the two ways I would recommend are
 ```
 pip install mcstatus
 ```
-2. Clone [this](https://github.com/py-mine/mcstatus) repository.
+2. Clone [this](https://github.com/py-mine/mcstatus) repository and use the module folder.
 
 ## Screenshots
 ![A screenshot of the main area of the gui](https://github.com/ojokenobi/mcstatus-frontend/blob/main/screenshots/MCservercheck1.PNG)
