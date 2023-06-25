@@ -6,6 +6,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import threading
+
 # The program doesnt support colors yet, so this list removes the color code characters from the description
 color_codes = ['§4','§c','§6','§e','§2','§a','§b','§3','§1','§9','§d','§5','§f','§7','§8','§0','§r','§l']
 
@@ -16,6 +17,12 @@ def refresh():
     texLbl.config(state=DISABLED)
     try:
         for obj in json.loads(open("servers.json",'r').read()):
+            print(obj[:1])
+            if str(obj[:1]) == "#":
+                texLbl.config(state=NORMAL)
+                texLbl.insert(END,f"{obj[1:]} has been set with ignore (#) flag, ignoring...\n\n")
+                texLbl.config(state=DISABLED)
+                continue
             try:
                 server = JavaServer.lookup(obj)
                 status = server.status()
@@ -71,6 +78,7 @@ def jsonwrite():
             servernamesFinal.append(i)
     open("servers.json",'w').write(json.dumps(servernamesFinal))
     editwin.destroy()
+    
 def jsonedit():
     global editText,editwin
     editwin = Toplevel(window)
