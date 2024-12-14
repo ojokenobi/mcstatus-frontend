@@ -17,7 +17,7 @@ def refresh():
     texLbl.config(state=DISABLED)
     try:
         for obj in json.loads(open("servers.json",'r').read()):
-            print(obj[:1])
+            #print(obj[:1])
             if str(obj[:1]) == "#":
                 texLbl.config(state=NORMAL)
                 texLbl.insert(END,f"{obj[1:]} has been set with ignore (#) flag, ignoring...\n\n")
@@ -56,19 +56,24 @@ def refresh():
     texLbl.config(state=DISABLED)
     
 def refresh_start():
-    global refresh_thread
+    global refresh_thread,refreshRunning
+    if refreshRunning == True:
+        return
     refresh_thread = threading.Thread(target=refresh)
     refresh_thread.daemon = True
     refresh_thread.start()
+    refreshRunning = True
     bar.place(x=200,y=8)
     bar.start(interval=12)
     window.after(20,check_refresh)
 def check_refresh():
+    global refreshRunning
     if refresh_thread.is_alive():
         window.after(20,check_refresh)
     else:
         bar.stop()
         bar.place_forget()
+        refreshRunning = False
 def jsonwrite():
     noNewLines = editText.get("1.0",END)[:len(editText.get("1.0",END)) - 1].replace("\n","")
     servernamesFinal = []
@@ -98,6 +103,8 @@ def helpopen(e):
 def closing():
     window.destroy()
     quit()
+
+refreshRunning = False
 window = Tk()
 window.geometry("642x450")
 window.title("Minecraft Server Checker")
