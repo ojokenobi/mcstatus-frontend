@@ -29,6 +29,7 @@ def refresh():
                 texLbl.config(state=NORMAL)
                 texLbl.insert(END,f"{obj} has {status.players.online} players\n")
                 texLbl.insert(END,f"The server responded in {status.latency} ms\n")
+                texLbl.insert(END,f"Version: {status.version.name}, Protocol {status.version.protocol}\n")
                 desc = status.description
                 for x in color_codes:
                     desc = desc.replace(str(x),"")
